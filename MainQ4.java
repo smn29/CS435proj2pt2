@@ -4,7 +4,7 @@ import java.util.HashSet;
 import java.util.Random;
 import java.util.ArrayList;
 
-public class MainQ4 {
+public class Main {
 
   public static void main(String[] args) {
     System.out.println("Kahns");
