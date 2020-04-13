@@ -45,13 +45,21 @@ class Main {
 
    //fix and finish dijkstras (04/08) 
   public static HashMap<Node, Integer> dijkstras(final Node start){
-    //used Geek for Geeks as reference: https://www.geeksforgeeks.org/dijkstras-shortest-path-algorithm-in-java-using-priorityqueue/
-    // used Geek for Geeks as reference: https://www.geeksforgeeks.org/java-program-for-dijkstras-shortest-path-algorithm-greedy-algo-7/
+    /*used Geek for Geeks as reference: https://www.geeksforgeeks.org/dijkstras-shortest-path-algorithm-in-java-using-priorityqueue/ and https://www.geeksforgeeks.org/java-program-for-dijkstras-shortest-path-algorithm-greedy-algo-7/
+
+    1.Create an empty map of nodes to distances. Initialize every node to map to infinity.
+    2.Set the distance for the origin to 0. Let curr be the origin.
+    3.While curr is not null and its distance is not infinity.
+      a.“Finalize” curr.
+      b.Iterate over its neighbors, “relax” each neighbor:
+        i.For each neighbor that is not finalized, update its distance (if less than its current distance) to the sum of curr’s distance and the weight of the edge between curr and this neighbor.
+      c.Set curr to the next min distance node – the node with the smallest distance that is not yet finalized.
+    */
 
     HashMap<Integer, Node> mapdist = new HashMap<Integer, Node>();
     HashMap<Integer, Node> visited = new HashMap<Integer, Node>();
     HashSet<Node> set = new HashSet<Node>();
-    PriorityQueue<Node> pq = new PriorityQueue<Node>();
+    PriorityQueue<Node> q = new PriorityQueue<Node>();
     int dist = 0;
 
     set = start.nodeset();
@@ -77,7 +85,7 @@ class Main {
       node.isTrue();
       if(!mapdist.containsKey(node)){
         mapdist.put(ndist, node);
-        visited.put(1, nd);
+        visited.put(1, node);
       }
     }
     return mapdist;
